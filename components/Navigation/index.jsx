@@ -17,11 +17,11 @@ export default function Navigation() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav  className="ms-auto">
-                        <Navbar.Text>
+                        {/* <Navbar.Text>
                             Signed in as: Mark Otto
-                        </Navbar.Text>
+                        </Navbar.Text> */}
                         <Nav.Link href="/editor">Editor</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">Logout</Nav.Link>
+                        {/* <Nav.Link eventKey={2} href="#memes">Logout</Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

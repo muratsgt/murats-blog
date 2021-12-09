@@ -1,7 +1,40 @@
-.container{
+.container {
+    padding: 20px;
+
+    h3{
+        font-size: 1.5rem;
+        color: crimson;
+        font-weight: bold;
+        text-align: center;
+    }
 }
 
 .formbox {
     display: flex;
     flex-direction: column;
+
+    label {
+        margin-top: 10px;
+        margin-bottom: 3px;
+        padding-left: 10px;
+    }
+
+    input,
+    textarea {
+        padding: 5px 10px;
+        border-radius: 5px;
+
+        &:focus {
+            border: dodgerblue 2px solid;
+        }
+    }
+
+    input[type="submit"] {
+        margin: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: white;
+        background-color: dodgerblue;
+        border-radius: 20px;
+    }
 }

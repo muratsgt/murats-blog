@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import styles from "./style.module.scss";
 import cn from "classnames";
-import Image from 'next/image';
 import { useRouter } from 'next/router'
-import { Form, Button, Row, Col } from 'react-bootstrap';
 import { postData } from '../../helper/fetchData';
 
 // TODO add buttons
@@ -15,10 +13,12 @@ export default function PostEditor({ post, setPosting, className }) {
     const [title, setTitle] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [content, setContent] = useState("");
+    const [isError, setError] = useState(false);
 
     // on submit -> save post to DB
     const handleSubmit = (e) => {
         e.preventDefault();
+        setError(false);
         setPosting(true);
         const entry = {
             title: title,
@@ -27,17 +27,18 @@ export default function PostEditor({ post, setPosting, className }) {
         }
         try {
             postData("/api/post", entry)
-                .then(() => router.push("/"));
+                .then(() => setTimeout(() => router.push("/"), 3000));
         } catch (error) {
             console.log(`error: `, error)
             setPosting(false);
+            setError(true);
         }
     }
 
     // handle onchange for inputs
     const handleChange = (e) => {
         e.preventDefault();
-        const name = e.target.name;
+        const name = e.target.id;
         if (name == "title")
             setTitle(e.target.value);
         else if (name == "image")
@@ -48,65 +49,16 @@ export default function PostEditor({ post, setPosting, className }) {
 
     return (
         <div className={cn(styles.container, className)}>
+            {isError && <h3>Sorry, there was an error saving the post</h3>}
             <form className={styles.formbox} onSubmit={handleSubmit}>
-                <label htmlFor="">
-                    Title:
-                    <input type="text" value={title} onChange={handleChange} name="title" />
-                </label>
-                <label htmlFor="">
-                    Image Url (optional):
-                    <input type="text" value={imageUrl} onChange={handleChange} name="image" />
-                </label>
-                <label htmlFor="">
-                    Content:
-                    <textarea value={content} onChange={handleChange} name="content" rows="15" />
-                </label>
+                <label htmlFor="title"> Title </label>
+                <input required type="text" value={title} onChange={handleChange} id="title" />
+                <label htmlFor="image"> Image Url (optional) </label>
+                <input type="text" value={imageUrl} onChange={handleChange} id="image" />
+                <label htmlFor="content"> Content </label>
+                <textarea required value={content} onChange={handleChange} id="content" rows="10" />
                 <input type="submit" value="Submit" />
             </form>
         </div>
     )
 }
-
-
-
-// <Form onSubmit={handleSubmit}>
-// <Form.Group className="mb-3" controlId="validationCustom01">
-//     <Form.Label>Title</Form.Label>
-//     <Form.Control
-//         required
-//         value={title}
-//         onChange={e => setTitle(e.value)}
-//         type="text"
-//         placeholder="title here..." />
-// </Form.Group>
-// <Form.Group className="mb-3" controlId="validationCustom02">
-//     <Form.Label>Image Url (optional)</Form.Label>
-//     <Form.Control
-//         value={imageUrl}
-//         onChange={e => setImageUrl(e.value)}
-//         type="text"
-//         placeholder="title here..." />
-// </Form.Group>
-// <Form.Group className="mb-3" controlId="validationCustom03">
-//     <Form.Label>Content</Form.Label>
-//     <Form.Control
-//         required
-//         value={content}
-//         onChange={e => setContent(e.value)}
-//         placeholder="content here..."
-//         as="textarea"
-//         rows={7} />
-// </Form.Group>
-// <Row>
-//     <Col>
-//         <Button variant="primary" type="submit">
-//             Save
-//         </Button>
-//     </Col>
-//     <Col>
-//         <Button variant="dark" type="button">
-//             Publish
-//         </Button>
-//     </Col>
-// </Row>
-// </Form>

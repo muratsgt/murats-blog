@@ -18,7 +18,7 @@ export default function Article({ post }) {
             <div className={styles.main}>
                 <div className={styles.headarea}>
                     <h2>{post.title}</h2>
-                    <h4>{post.author?.name}</h4>
+                    <h4>by {post.author?.name}</h4>
                 </div>
                 <Image
                     src={post.imageUrl}

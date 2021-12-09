@@ -1,21 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
 import Navigation from '../components/Navigation'
-import Image from 'next/image'
-import styles from '../styles/postpage.module.scss'
+import styles from '../styles/editor.module.scss'
 import PostEditor from '../components/PostEditor'
-import { Loader } from 'react-overlay-loader';
+import InfoModal from "../components/InfoModal"
 
 // TODO: make it rich text editor
-
-// delete after fetch done
-const article = {
-    title: "How to make a good coffee with cheap ingredients",
-    content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-    author: "Murat Akca",
-    imageUrl: "https://images.pexels.com/photos/373883/pexels-photo-373883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    id: 1,
-}
 
 // article page
 export default function MyEditor({ post }) {
@@ -29,10 +19,9 @@ export default function MyEditor({ post }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navigation></Navigation>
-            <div>
-                <Loader fullPage loading={isModal} />
-            </div>
+            {isModal && <InfoModal />}
             <div className={styles.main}>
+                <h2>Share Your Story...</h2>
                 <PostEditor setPosting={setModal}></PostEditor>
             </div>
         </div>
