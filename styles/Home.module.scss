@@ -1,0 +1,45 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.topbox {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    grid-template-rows: 350px 200px;
+    grid-template-areas:
+        "a b"
+        "a c";
+
+    .top1 {
+        grid-area: a;
+    }
+
+    .top2 {
+        grid-area: b;
+    }
+
+    .top3 {
+        grid-area: c;
+    }
+}
+
+.belowbox {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (max-width: 800px) {
+    .main {
+        max-width: 600px;
+    }
+
+    .topbox {
+        display: flex;
+        flex-direction: column;
+    }
+}

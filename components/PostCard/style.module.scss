@@ -1,0 +1,90 @@
+.backimage{
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    cursor: pointer;
+    padding: 30px;
+    border: #fff 1px solid;
+    box-shadow: black 0 0 5px 0px;
+    overflow: hidden;
+    &:hover {
+    }
+}
+
+.textbox {
+    position: relative;
+    background-color: rgba($color: #fff, $alpha: 0.8);
+    border-radius: 40px;
+    padding: 10px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+        font-size: 2rem;
+        font-family: 'Righteous', cursive;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+        font-family: 'Rouge Script', cursive;
+        margin: 0;
+    }
+}
+
+.type2 {
+    padding: 20px;
+    background-color: random($limit: 2);
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.3rem;
+    }
+
+}
+
+.flat {
+    border: #fff 1px solid;
+    cursor: pointer;
+    margin-top: 2px;
+    max-height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #fdfdfd;
+    box-shadow: black 0 0 5px 0px;
+    overflow: hidden;
+
+    h2 {
+        font-size: 1.5rem;
+        font-family: 'Righteous', cursive;
+    }
+
+    h4 {
+        text-align: right;
+        font-size: 1.3rem;
+        font-family: 'Rouge Script', cursive;
+        margin: 0;
+    }
+
+    .imagebox {
+        flex-shrink: 0;
+        width: 250px;
+        height: 200px;
+    }
+
+    .flattext {
+        padding: 1rem;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+    }
+}

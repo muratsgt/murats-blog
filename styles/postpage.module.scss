@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .headarea {
+        margin: 30px 20px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    h4 {
+        text-align: center;
+    }
+}
+
+.contentarea {
+    max-width: 600px;
+    padding: 30px 25px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+@media (max-width: 800px) {
+    .main {
+        max-width: 600px;
+    }
+}
