@@ -56,7 +56,7 @@ export default function PostEditor({ post, setPosting, className }) {
                 <label htmlFor="image"> Image Url (optional) </label>
                 <input type="text" value={imageUrl} onChange={handleChange} id="image" />
                 <label htmlFor="content"> Content </label>
-                <textarea required value={content} onChange={handleChange} id="content" rows="10" />
+                <textarea required value={content} onChange={handleChange} id="content" rows="11" />
                 <input type="submit" value="Submit" />
             </form>
         </div>

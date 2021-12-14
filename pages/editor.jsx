@@ -22,6 +22,8 @@ export default function MyEditor({ post }) {
             {isModal && <InfoModal />}
             <div className={styles.main}>
                 <h2>Share Your Story...</h2>
+                <p>Gaining knowledge, is the first step to wisdom. <br />
+                    Sharing it, is the first step to humanity.</p>
                 <PostEditor setPosting={setModal}></PostEditor>
             </div>
         </div>
