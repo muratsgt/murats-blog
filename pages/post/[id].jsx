@@ -1,27 +1,21 @@
-import Head from 'next/head'
-import Navigation from '../../components/Navigation'
 import Image from 'next/image'
 import styles from '../../styles/postpage.module.scss'
 import prisma from '../../lib/prisma'
+import Layout from "../../components/Layout"
 
 // article page
 export default function Article({ post }) {
+    let imageUrl = post.imageUrl ?? "/defaultpic.jpg"
 
     return (
-        <div className={styles.container}>
-            <Head>
-                <title>{post.title}</title>
-                <meta name="description" content={post.content?.slice(0, 50)} />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Navigation></Navigation>
-            <div className={styles.main}>
+        <Layout pageTitle={post.title} pageDesc={post.content?.slice(0, 50)}>
+            <div className={styles.mainarea}>
                 <div className={styles.headarea}>
                     <h2>{post.title}</h2>
-                    <h4>by {post.author?.name}</h4>
+                    {post.author && <h4>by {post.author.name}</h4>}
                 </div>
                 <Image
-                    src={post.imageUrl}
+                    src={imageUrl}
                     alt={post.title}
                     width={1000}
                     height={300}
@@ -32,7 +26,7 @@ export default function Article({ post }) {
                     <p>{post.content}</p>
                 </div>
             </div>
-        </div>
+        </Layout>
     )
 }
 

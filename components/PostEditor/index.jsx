@@ -9,10 +9,18 @@ import { postData } from '../../helper/fetchData';
 // Editor for Posts
 export default function PostEditor({ post, setPosting, className }) {
     const router = useRouter();
+
+    // first value for the inputs
+    let temp = {
+        title: post?.title,
+        imageUrl: post?.imageUrl,
+        content: post?.content
+    }
+
     // const { id, title, content, author, imageUrl } = post;
-    const [title, setTitle] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [content, setContent] = useState("");
+    const [title, setTitle] = useState(temp.title);
+    const [imageUrl, setImageUrl] = useState(temp.imageUrl);
+    const [content, setContent] = useState(temp.content);
     const [isError, setError] = useState(false);
 
     // on submit -> save post to DB
@@ -49,7 +57,7 @@ export default function PostEditor({ post, setPosting, className }) {
 
     return (
         <div className={cn(styles.container, className)}>
-            {isError && <h3>Sorry, there was an error saving the post</h3>}
+            {isError && <h3>Sorry, there was an error saving the post !</h3>}
             <form className={styles.formbox} onSubmit={handleSubmit}>
                 <label htmlFor="title"> Title </label>
                 <input required type="text" value={title} onChange={handleChange} id="title" />

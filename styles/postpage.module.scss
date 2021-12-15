@@ -1,10 +1,4 @@
-.main {
-    display: flex;
-    flex-direction: column;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-
+.mainarea {
     .headarea {
         margin: 30px 20px;
         margin-bottom: 10px;
@@ -23,17 +17,11 @@
 }
 
 .contentarea {
-    max-width: 600px;
-    padding: 30px 25px;
+    max-width: 700px;
+    padding: 30px 3vw;
     margin-left: auto;
     margin-right: auto;
     font-size: 1.2rem;
-    line-height: 2rem;
+    line-height: 1.8rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-@media (max-width: 800px) {
-    .main {
-        max-width: 600px;
-    }
 }
