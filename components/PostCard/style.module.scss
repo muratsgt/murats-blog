@@ -47,7 +47,7 @@
     }
 
     h2 {
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
 
     h4 {
@@ -79,7 +79,12 @@
     box-shadow: black 0 0 5px 0px;
     overflow: hidden;
 
+    img{
+        object-fit: cover;
+    }
+
     h2 {
+        text-align: right;
         font-size: 1.5em;
         font-family: 'Righteous', cursive;
     }

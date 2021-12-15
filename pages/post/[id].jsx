@@ -18,6 +18,8 @@ export default function Article({ post }) {
     // default image if there is no image
     let imageUrl = post?.imageUrl ?? "/defaultpic.jpg"
 
+    console.log(`post.imageUrl`, post.imageUrl)
+
     const handleDelete = () => {
         fetchData(`/api/post/delete?postId=${post.id}`)
             .then(res => {
@@ -59,7 +61,7 @@ export default function Article({ post }) {
 }
 
 
-export async function getServerSideProps({ params, res }) {
+export async function getServerSideProps({ params }) {
     const post = await prisma.post.findUnique({
         where: {
             id: Number(params?.id) || -1,

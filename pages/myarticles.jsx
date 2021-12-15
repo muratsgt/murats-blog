@@ -6,7 +6,7 @@ import styles from '../styles/myarticles.module.scss';
 import { CardFlat } from '../components/PostCard';
 
 const MyArticles = (props) => {
-    const { data: session, status } = useSession()
+    const { data: session } = useSession()
 
     if (!session) {
         return (

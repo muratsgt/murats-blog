@@ -9,6 +9,9 @@ export function CardTop({ post, className, type2 }) {
     const router = useRouter();
 
     let imageUrl = post.imageUrl ?? "/defaultpic.jpg"
+    let shortTitle = post?.title;
+    if (post.title?.length > 70)
+        shortTitle = post.title?.slice(0, 69) + "..."
 
     // route to post page
     const handleClick = () => {
@@ -30,7 +33,7 @@ export function CardTop({ post, className, type2 }) {
                 objectPosition="center"
             />
             < div className={styles.textbox} >
-                <h2>{post.title}</h2>
+                <h2>{shortTitle}</h2>
                 <h4>{post.author?.name}</h4>
             </ div>
         </div >
@@ -41,7 +44,7 @@ export function CardTop({ post, className, type2 }) {
 export function CardFlat({ post, className, children }) {
     const router = useRouter();
 
-    let imageUrl = post.imageUrl ?? "/defaultpic.jpg"
+    let imageUrl = post.imageUrl ? post.imageUrl : "/defaultpic.jpg"
 
     // route to post page
     const handleClick = () => {
@@ -52,13 +55,12 @@ export function CardFlat({ post, className, children }) {
         <div onClick={handleClick} className={cn(styles.flat, className)}>
             <div className={styles.hoverEffect} />
             <div className={styles.imagebox}>
-                <Image
+                <img
                     src={imageUrl}
                     alt={post.title}
                     width={250}
                     height={200}
-                    objectFit="cover"
-                    objectPosition="center"
+                    onError={(e) => e.target.src = "/defaultpic.jpg"}
                 />
             </div>
             <div className={styles.flattext}>

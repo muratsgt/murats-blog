@@ -7,12 +7,12 @@ import { Button } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown'
 
 // Editor for Posts
-export default function PostEditor({ post, setPosting, className }) {
+export default function PostEditor({ setPosting, className }) {
     const router = useRouter();
 
     // const { id, title, content, author, imageUrl } = post;
     const [title, setTitle] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState(null);
     const [content, setContent] = useState("");
     const [isError, setError] = useState(false);
     const [isPreview, setPreview] = useState(false);
