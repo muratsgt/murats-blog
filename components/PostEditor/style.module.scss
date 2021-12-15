@@ -23,6 +23,7 @@
     textarea {
         padding: 5px 10px;
         border-radius: 5px;
+        white-space: pre-wrap;
 
         &:focus {
             border: dodgerblue 2px solid;
@@ -43,4 +44,22 @@
             background-color: dodgerblue;
         }
     }
+}
+
+
+.previewarea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contentarea {
+    width: 100%;
+    max-width: 700px;
+    padding: 30px 3vw;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    white-space: pre-wrap;
+    padding: 20px;
+    border: 1px #666 solid;
+    border-radius: 10px;
+    margin-top: 10px;
 }

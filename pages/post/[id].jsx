@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react';
 import { Button } from 'react-bootstrap';
 import { fetchData } from '../../helper/fetchData';
 import { useRouter } from 'next/router';
+import ReactMarkdown from 'react-markdown'
 
 // article page
 export default function Article({ post }) {
@@ -32,7 +33,7 @@ export default function Article({ post }) {
         <Layout pageTitle={post.title} pageDesc={post.content?.slice(0, 50)}>
             <div className={styles.mainarea}>
                 <div className={styles.headarea}>
-                    <h2>{post.title}</h2>
+                    <h1>{post.title}</h1>
                     {post.author && <h4>by {post.author.name}</h4>}
                 </div>
                 {postOwner && <div className={styles.editactions}>
@@ -49,9 +50,9 @@ export default function Article({ post }) {
                     objectFit="cover"
                     objectPosition="center"
                 ></Image>
-                <div className={styles.contentarea}>
-                    <p>{post.content}</p>
-                </div>
+                <ReactMarkdown className={styles.contentarea}>
+                    {post.content}
+                </ReactMarkdown>
             </div>
         </Layout>
     )

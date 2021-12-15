@@ -3,25 +3,19 @@ import styles from "./style.module.scss";
 import cn from "classnames";
 import { useRouter } from 'next/router'
 import { postData } from '../../helper/fetchData';
-
-// TODO add buttons
+import { Button } from 'react-bootstrap';
+import ReactMarkdown from 'react-markdown'
 
 // Editor for Posts
 export default function PostEditor({ post, setPosting, className }) {
     const router = useRouter();
 
-    // first value for the inputs
-    let temp = {
-        title: post?.title,
-        imageUrl: post?.imageUrl,
-        content: post?.content
-    }
-
     // const { id, title, content, author, imageUrl } = post;
-    const [title, setTitle] = useState(temp.title);
-    const [imageUrl, setImageUrl] = useState(temp.imageUrl);
-    const [content, setContent] = useState(temp.content);
+    const [title, setTitle] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const [content, setContent] = useState("");
     const [isError, setError] = useState(false);
+    const [isPreview, setPreview] = useState(false);
 
     // on submit -> save post to DB
     const handleSubmit = (e) => {
@@ -55,6 +49,11 @@ export default function PostEditor({ post, setPosting, className }) {
             setContent(e.target.value);
     }
 
+    // handle preview button
+    const handlePreview = () => {
+        setPreview(st => !st)
+    }
+
     return (
         <div className={cn(styles.container, className)}>
             {isError && <h3>Sorry, there was an error saving the post !</h3>}
@@ -63,10 +62,16 @@ export default function PostEditor({ post, setPosting, className }) {
                 <input required type="text" value={title} onChange={handleChange} id="title" />
                 <label htmlFor="image"> Image Url (optional) </label>
                 <input type="text" value={imageUrl} onChange={handleChange} id="image" />
-                <label htmlFor="content"> Content </label>
+                <label htmlFor="content"> Content (You can write it in markdown)</label>
                 <textarea required value={content} onChange={handleChange} id="content" rows="11" />
                 <input type="submit" value="Submit" />
             </form>
+            <div className={styles.previewarea}>
+                <Button onClick={handlePreview} variant="outline-success" >Article Preview</Button>
+                {isPreview && <ReactMarkdown className={styles.contentarea}>
+                    {content}
+                </ReactMarkdown>}
+            </div>
         </div>
     )
 }
