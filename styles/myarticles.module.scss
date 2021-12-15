@@ -1,0 +1,37 @@
+.mainarea {
+    padding-top: 20px;
+
+    h2 {
+        text-align: center;
+    }
+
+    >p {
+        font-style: italic;
+        text-align: center;
+        letter-spacing: 2px;
+        margin: 0 10px;
+    }
+}
+
+.cardstyle {
+    margin: 20px;
+    border-radius: 20px;
+    height: 130px;
+}
+
+.status {
+    width: 100px;
+    margin: auto 10px;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1em;
+    p {
+        font-weight: bold;
+    }
+    p[color="green"] {
+        color: green;
+    }
+    p[color="yellow"] {
+        color: goldenrod;
+    }
+}

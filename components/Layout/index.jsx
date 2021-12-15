@@ -12,7 +12,7 @@ export default function Layout({ children,
         <div>
             <Head>
                 <title>{pageTitle}</title>
-                <meta charset="UTF-8" />
+                <meta charSet="UTF-8" />
                 <meta name="description" content={pageDesc} />
                 <meta name="author" content="Murat Akca" />
                 <meta name="keywords" content="Blog, Murat, Akca, Life, Technology" />

@@ -17,8 +17,6 @@ export default function handler(req, res) {
       return postPost(req, res);
     case "PUT":
       return editPost(req, res);
-    case "DELETE":
-      return deletePost(req, res);
     default:
       return res.status(400).json({ message: 'Wrong request!' });
   }
@@ -42,9 +40,6 @@ export async function getPost(req, res) {
 }
 
 export async function editPost(req, res) {
-  return null
-}
-export async function deletePost(req, res) {
   return null
 }
 

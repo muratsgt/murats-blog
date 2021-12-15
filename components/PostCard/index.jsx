@@ -38,7 +38,7 @@ export function CardTop({ post, className, type2 }) {
 }
 
 // cards for posts, below of homepage
-export function CardFlat({ post, className }) {
+export function CardFlat({ post, className, children }) {
     const router = useRouter();
 
     let imageUrl = post.imageUrl ?? "/defaultpic.jpg"
@@ -65,6 +65,7 @@ export function CardFlat({ post, className }) {
                 <h2>{post.title}</h2>
                 <h4>{post.author?.name}</h4>
             </div>
+            {children}
         </div>
     )
 }

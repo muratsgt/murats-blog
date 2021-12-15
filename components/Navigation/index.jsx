@@ -1,9 +1,5 @@
-import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
-// import { signOut, useSession } from "next-auth/react";
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import { useSession, signOut } from "next-auth/react"
-
 
 // top navigation bar
 export default function Navigation() {
@@ -14,7 +10,7 @@ export default function Navigation() {
     }
 
     return (
-        <Navbar className="py-1" sticky="top" collapseOnSelect expand="md" bg="dark" variant="dark">
+        <Navbar className="py-0" sticky="top" collapseOnSelect expand="xl" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand href="/">Murats Blog</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -24,9 +20,10 @@ export default function Navigation() {
                             <Navbar.Text>Signed in as: {session.user.email}</Navbar.Text>}
                     </Nav>
                     <Nav className="ms-auto">
-                        <Nav.Link href="/editor">Editor</Nav.Link>
+                        <Nav.Link className="me-3" href="/myarticles">My Posts</Nav.Link>
+                        <Nav.Link className="me-3" href="/editor">Editor</Nav.Link>
                         {status === "authenticated" ?
-                            <Button className="mx-3" variant="outline-danger" size="sm" onClick={handleSignout}>Sign out</Button>
+                            <Nav.Link onClick={handleSignout}>Sign out</Nav.Link>
                             : <Nav.Link href="/api/auth/signin">Login</Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
