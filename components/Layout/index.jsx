@@ -2,7 +2,13 @@ import Head from 'next/head'
 import Navigation from '../Navigation'
 import styles from './layout.module.scss'
 
-// article page
+/**
+ * The general layout, including html head and navbar
+ *
+ * @param {string} pageTitle Html Head Title
+ * @param {string} pageDesc Html head desc
+ * @returns div
+ */
 export default function Layout({ children,
     pageTitle = "Murat's Blog",
     pageDesc = "Publish your articles, blog entries, ideas, feelings and more... ",
