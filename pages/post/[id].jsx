@@ -9,11 +9,14 @@ import ReactMarkdown from 'react-markdown'
 import ShareButtons from '../../components/ShareButtons';
 import { useState, useEffect } from "react"
 import Loading from '../../components/Loading'
+import InfoModal from "../../components/InfoModal"
 
 // article page
 export default function Article() {
     const { data: session } = useSession();
     const [post, setPost] = useState(null);
+    const [isModal, setModal] = useState(false);
+
     const router = useRouter();
 
     let loading = !post?.id && !post?.error
@@ -39,16 +42,9 @@ export default function Article() {
                 })
     }, [router?.query.id])
 
-    // handle delete button
+    // open delete modal
     const handleDelete = () => {
-        fetchData(`/api/post/delete?postId=${post.id}`)
-            .then(res => {
-                if (res.error)
-                    alert(res.error)
-                else {
-                    router.push("/myarticles");
-                }
-            });
+        setModal(true);
     }
 
     return (
@@ -68,8 +64,10 @@ export default function Article() {
                         </div>
                         {postOwner &&
                             <div className={styles.editactions}>
-                                {/* <Button size="sm" variant="outline-primary">
-                        Edit Post</Button> */}
+                                {isModal && <InfoModal postId={post.id}
+                                    set={setModal} title="Are you sure?"
+                                    message="Post will be deleted from database" />
+                                }
                                 <Button onClick={handleDelete} size="sm" variant="outline-danger">
                                     Delete Post</Button>
                             </div>

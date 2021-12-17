@@ -5,9 +5,6 @@ import InfoModal from "../components/InfoModal"
 import Layout from "../components/Layout"
 import { useSession } from 'next-auth/react';
 
-
-// TODO: make it rich text editor
-
 // article page
 export default function MyEditor({ post }) {
     const [isModal, setModal] = useState(false);

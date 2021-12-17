@@ -1,20 +1,10 @@
 import styles from '../styles/Home.module.scss'
 import prisma from '../lib/prisma'
-import { useEffect, useState } from 'react'
-import { fetchData } from '../helper/fetchData'
 import { CardTop, CardFlat } from '../components/PostCard'
 import Layout from '../components/Layout'
 
-// one page app, home page
+// Home page
 export default function Home({ feed }) {
-  // posts kept here
-  const [posts, setPosts] = useState([]);
-  console.log(`feed: `, feed)
-
-  // useEffect(() => {
-  //   // fetch messages from DB
-  //   fetchData(/api/post).then(res => setPosts(res));
-  // }, []);
 
   return (
     <Layout >
@@ -30,7 +20,7 @@ export default function Home({ feed }) {
   )
 }
 
-
+// builds homepage every 2 hours period
 export const getStaticProps = async () => {
   const feed = await prisma.post.findMany({
     where: { published: true },
@@ -40,5 +30,5 @@ export const getStaticProps = async () => {
       },
     },
   });
-  return { props: { feed } };
+  return { props: { feed }, revalidate: 7200, };
 };
