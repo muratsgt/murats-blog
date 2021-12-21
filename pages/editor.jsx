@@ -5,7 +5,7 @@ import InfoModal from "../components/InfoModal"
 import Layout from "../components/Layout"
 import { useSession } from 'next-auth/react';
 
-// article page
+// editor page
 export default function MyEditor({ post }) {
     const [isModal, setModal] = useState(false);
     const { data: session } = useSession()

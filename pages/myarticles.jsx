@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import styles from '../styles/myarticles.module.scss';
 import { CardFlat } from '../components/PostCard';
 
+// page for drafts and published articles from user
 const MyArticles = (props) => {
     const { data: session } = useSession()
 

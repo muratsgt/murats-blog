@@ -4,6 +4,9 @@ import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 
+/**
+ * Next Auth, auth for google and github
+ */
 export default NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [

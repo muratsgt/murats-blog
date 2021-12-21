@@ -25,14 +25,26 @@ export default function handler(req, res) {
 // returns all the posts
 export async function getPost(req, res) {
   try {
-    const data = await prisma.post.findMany({
+    let options = {
       where: { published: true },
       include: {
         author: {
           select: { name: true },
         },
       },
-    });
+    }
+    if (req.query.text) {
+      let searchText = decodeURI(req.query.text);
+      options.where = {
+        published: true,
+        title: {
+          contains: searchText,
+          mode: 'insensitive',
+        }
+      }
+    }
+
+    const data = await prisma.post.findMany(options);
     return res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ message: error })
